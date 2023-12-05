@@ -119,4 +119,24 @@
   </footer>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('myForm');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const email = document.getElementById('exampleFormControlInput1').value.trim();
+            const message = document.getElementById('exampleFormControlTextarea1').value.trim();
+            
+            if (email === '' || message === '') {
+                alert('Please fill in all fields.');
+                return false;
+            }
+            
+            // Further form handling logic (submission, AJAX, etc.) goes here
+        });
+    });
+
+</script>
+
 </body>
