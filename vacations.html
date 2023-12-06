@@ -180,19 +180,42 @@
 </div>
 
 <script>
-    // Get the form element
-    const form = document.getElementById('travelQuizForm');
+  // Get the form element
+  const form = document.getElementById('travelQuizForm');
 
-    // Function to handle form submission
-    function showAlert(event) {
-      event.preventDefault(); // Prevent the form from submitting
+  // Function to handle form submission
+  function showAlert(event) {
+    event.preventDefault(); // Prevent the form from submitting
 
-      // Show thank you message
+    // Get all radio buttons by their name attributes
+    const q1Answers = document.querySelectorAll('input[name="q1"]');
+    const q2Answers = document.querySelectorAll('input[name="q2"]');
+    const q3Answers = document.querySelectorAll('input[name="q3"]');
+
+    // Check if all questions have been answered
+    if (
+      !isAnswered(q1Answers) ||
+      !isAnswered(q2Answers) ||
+      !isAnswered(q3Answers)
+    ) {
+      alert('Please answer all questions.'); // Show alert for unanswered questions
+    } else {
       alert('Thank you for your interest!');
     }
+  }
 
-    // Add form submit event listener
-    form.addEventListener('submit', showAlert);
-  </script>
+  // Function to check if a question is answered
+  function isAnswered(answers) {
+    for (const answer of answers) {
+      if (answer.checked) {
+        return true; // At least one answer is checked
+      }
+    }
+    return false; // No answer is checked
+  }
+
+  // Add form submit event listener
+  form.addEventListener('submit', showAlert);
+</script>
 
 </body>
